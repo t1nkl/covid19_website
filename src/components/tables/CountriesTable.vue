@@ -14,8 +14,6 @@ const fetchData = async () => {
 }
 const countriesData = computed<Country[]>(() => store.getCountriesData)
 
-let sortBy = [{ key: 'cases', order: 'desc' }]
-
 onMounted(() => {
   fetchData()
 })
@@ -33,7 +31,6 @@ onMounted(() => {
       ></v-text-field>
     </v-card-title>
     <v-data-table
-      v-model:sort-by="sortBy"
       :headers="store.getCountriesTableHeaders"
       :items="countriesData"
       :loading="loading"
@@ -76,16 +73,28 @@ onMounted(() => {
         <v-chip class="ma-2" color="lime" small text-color="black" v-else> 0 </v-chip>
       </template>
 
+      <!-- Active -->
+      <!-- eslint-disable-next-line-->
+      <template v-slot:item.active="{ item }">
+        {{ parseFloat(item.raw.active).toLocaleString() }}
+      </template>
+
       <!-- Recovered -->
       <!-- eslint-disable-next-line-->
       <template v-slot:item.recovered="{ item }">
-        {{ parseFloat(item.raw.recovered).toLocaleString('ru') }}
+        {{ parseFloat(item.raw.recovered).toLocaleString() }}
       </template>
 
       <!-- Deaths -->
       <!-- eslint-disable-next-line-->
       <template v-slot:item.deaths="{ item }">
-        {{ parseFloat(item.raw.deaths).toLocaleString('ru') }}
+        {{ parseFloat(item.raw.deaths).toLocaleString() }}
+      </template>
+
+      <!-- Tests -->
+      <!-- eslint-disable-next-line-->
+      <template v-slot:item.tests="{ item }">
+        {{ parseFloat(item.raw.tests).toLocaleString() }}
       </template>
     </v-data-table>
   </div>

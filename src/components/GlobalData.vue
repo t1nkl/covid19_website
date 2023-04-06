@@ -31,13 +31,13 @@ onMounted(() => {
           new Date(globalDataTotal.updated).toLocaleString().split(',')[0].replace(/\//g, '-')
         }}
       </p>
-      <p>Today Confirmed Cases: {{ globalDataTotal.todayCases }}</p>
-      <p>Today Recovered: {{ globalDataTotal.todayRecovered }}</p>
-      <p>Today Deaths: {{ globalDataTotal.todayDeaths }}</p>
+      <p>Confirmed Cases: {{ globalDataTotal.todayCases.toLocaleString() }}</p>
+      <p>Recovered: {{ globalDataTotal.todayRecovered.toLocaleString() }}</p>
+      <p>Deaths: {{ globalDataTotal.todayDeaths.toLocaleString() }}</p>
       <br />
-      <p>Total Confirmed Cases: {{ globalDataTotal.cases }}</p>
-      <p>Total Recovered: {{ globalDataTotal.recovered }}</p>
-      <p>Total Deaths: {{ globalDataTotal.deaths }}...</p>
+      <p>Total Confirmed Cases: {{ globalDataTotal.cases.toLocaleString() }}</p>
+      <p>Total Recovered: {{ globalDataTotal.recovered.toLocaleString() }}</p>
+      <p>Total Deaths: {{ globalDataTotal.deaths.toLocaleString() }}...</p>
       <br />
       <RouterLink to="/details">more details</RouterLink>
     </div>

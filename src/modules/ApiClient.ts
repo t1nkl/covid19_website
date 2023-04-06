@@ -4,10 +4,10 @@ import {
   fetchCountryHistoricalData as fetchCountryHistoricalDataCoronaNinjaApi
 } from '@/api/CoronaNinjaApi'
 import {
-  fetchGlobalData as fetchGlobalDataExampleApi,
-  fetchCountriesData as fetchCountriesDataExampleApi,
-  fetchCountryHistoricalData as fetchCountryHistoricalDataExampleApi
-} from '@/api/ExampleApi'
+  fetchGlobalData as fetchGlobalDataCovid19Api,
+  fetchCountriesData as fetchCountriesDataCovid19Api,
+  fetchCountryHistoricalData as fetchCountryHistoricalDataCovid19Api
+} from '@/api/Covid19Api'
 
 export interface ApiClient {
   fetchGlobalData(): Promise<any>
@@ -27,14 +27,13 @@ export function apiClient(): ApiClient {
     fetchCountriesData: fetchCountriesDataCoronaNinjaApi,
     fetchCountryHistoricalData: fetchCountryHistoricalDataCoronaNinjaApi
   }
-
-  const exampleApi: Api = {
-    fetchGlobalData: fetchGlobalDataExampleApi,
-    fetchCountriesData: fetchCountriesDataExampleApi,
-    fetchCountryHistoricalData: fetchCountryHistoricalDataExampleApi
+  const covid19Api: Api = {
+    fetchGlobalData: fetchGlobalDataCovid19Api,
+    fetchCountriesData: fetchCountriesDataCovid19Api,
+    fetchCountryHistoricalData: fetchCountryHistoricalDataCovid19Api
   }
 
-  const apiList: Api[] = [coronaNinjaApi, exampleApi]
+  const apiList: Api[] = [coronaNinjaApi, covid19Api]
 
   let currentApiIndex = 0
 
