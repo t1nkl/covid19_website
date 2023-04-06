@@ -38,6 +38,6 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting --project sars-cov-2-app
+          args: deploy --only hosting --project my-projects-6fe1a
         env:
           FIREBASE_TOKEN: "1//09D5DSos7_nJCCgYIARAAGAkSNwF-L9IrB6pDgbu_MEYNsImEt-R7Xn-MkNnc4mpWjA1oOCVwfsKbos8Sx9mnDDc9GJebHT3ecOk"
