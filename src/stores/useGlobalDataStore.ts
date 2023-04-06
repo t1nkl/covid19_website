@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { GlobalData } from '@/models/GlobalData'
-import { fetchGlobalData } from '@/api/CoronaNinjaApi'
+import { apiClient } from '@/modules/ApiClient'
 
 export const useGlobalDataStore = defineStore('global_data', {
   state: () => ({
@@ -9,7 +9,7 @@ export const useGlobalDataStore = defineStore('global_data', {
   actions: {
     async fetchData() {
       try {
-        this.globalData = await fetchGlobalData()
+        this.globalData = await apiClient().fetchGlobalData()
       } catch (error) {
         console.error(error)
       }

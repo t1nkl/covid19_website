@@ -14,7 +14,7 @@ const fetchData = async () => {
 }
 const countriesData = computed<Country[]>(() => store.getCountriesData)
 
-const sortBy = [{ key: 'cases', order: 'desc' }]
+let sortBy = [{ key: 'cases', order: 'desc' }]
 
 onMounted(() => {
   fetchData()
@@ -43,9 +43,10 @@ onMounted(() => {
       height="800"
       item-key="country.country"
       class="elevation-1"
+      hide-default-footer
       disable-pagination
       fixed-header
-      hide-default-footer
+      hover
     >
       <!-- Country -->
       <!-- eslint-disable-next-line-->
