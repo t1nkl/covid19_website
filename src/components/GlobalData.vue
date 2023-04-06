@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import type { GlobalData } from '@/models/GlobalData'
 import { useGlobalDataStore } from '@/stores/useGlobalDataStore'
+import LoaderSimplify from '@/components/animations/LoaderSimplify.vue'
 
 const store = useGlobalDataStore()
 const loading = ref(true)
@@ -22,7 +23,14 @@ onMounted(() => {
     <h1>World</h1>
     <br />
     <div v-if="Object.keys(globalDataTotal).length > 0 && !loading">
-      <p>Date: {{ globalDataTotal.updated }}</p>
+      <p>
+        Date:
+        {{
+          new Date(globalDataTotal.updated).toLocaleString().replace(',', '').split(' ')[1] +
+          ' ' +
+          new Date(globalDataTotal.updated).toLocaleString().split(',')[0].replace(/\//g, '-')
+        }}
+      </p>
       <p>Today Confirmed Cases: {{ globalDataTotal.todayCases }}</p>
       <p>Today Recovered: {{ globalDataTotal.todayRecovered }}</p>
       <p>Today Deaths: {{ globalDataTotal.todayDeaths }}</p>
@@ -31,12 +39,10 @@ onMounted(() => {
       <p>Total Recovered: {{ globalDataTotal.recovered }}</p>
       <p>Total Deaths: {{ globalDataTotal.deaths }}...</p>
       <br />
-      <RouterLink to="/details">details</RouterLink>
+      <RouterLink to="/details">more details</RouterLink>
     </div>
     <div v-else>
-      <p>
-        Loading<span class="dot-1">.</span><span class="dot-2">.</span><span class="dot-3">.</span>
-      </p>
+      <LoaderSimplify />
     </div>
   </div>
 </template>
@@ -47,30 +53,6 @@ onMounted(() => {
   margin: 10rem auto;
   padding: 2rem;
   font-weight: normal;
-
-  @keyframes blink {
-    0% {
-      opacity: 0.2;
-    }
-    20% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0.2;
-    }
-  }
-  .dot-1 {
-    animation: blink 1s infinite;
-    animation-delay: 1s;
-  }
-  .dot-2 {
-    animation: blink 2s infinite;
-    animation-delay: 2s;
-  }
-  .dot-3 {
-    animation: blink 4s infinite;
-    animation-delay: 4s;
-  }
 
   a,
   .green {

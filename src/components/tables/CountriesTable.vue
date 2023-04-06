@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import type { Country } from '@/models/Country'
 import { useCountriesStore } from '@/stores/useCountriesStore'
+import LoaderSimplify from '@/components/animations/LoaderSimplify.vue'
 
 const store = useCountriesStore()
 const loading = ref(true)
@@ -12,6 +13,8 @@ const fetchData = async () => {
   loading.value = false
 }
 const countriesData = computed<Country[]>(() => store.getCountriesData)
+
+const sortBy = [{ key: 'cases', order: 'desc' }]
 
 onMounted(() => {
   fetchData()
@@ -30,6 +33,7 @@ onMounted(() => {
       ></v-text-field>
     </v-card-title>
     <v-data-table
+      v-model:sort-by="sortBy"
       :headers="store.getCountriesTableHeaders"
       :items="countriesData"
       :loading="loading"
@@ -51,6 +55,7 @@ onMounted(() => {
             <v-img
               :alt="item.raw.country"
               :src="item.raw.countryInfo.flag"
+              lazy-src="@/assets/image/lazy.jpeg"
               v-if="item.raw.countryInfo.flag"
             ></v-img>
             <v-icon dark v-else>mdi-alert-circle-outline</v-icon>
@@ -82,6 +87,9 @@ onMounted(() => {
         {{ parseFloat(item.raw.deaths).toLocaleString('ru') }}
       </template>
     </v-data-table>
+  </div>
+  <div v-else>
+    <LoaderSimplify />
   </div>
 </template>
 
