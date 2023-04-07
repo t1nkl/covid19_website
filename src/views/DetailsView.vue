@@ -1,9 +1,24 @@
 <script lang="ts" setup>
 import CountriesTable from '@/components/tables/CountriesTable.vue'
+
+const breadcrumbsItems = [
+  {
+    title: 'Home',
+    disabled: false,
+    href: '/'
+  },
+  {
+    title: 'Details',
+    disabled: true,
+    href: '/details'
+  }
+]
 </script>
 
 <template>
   <div class="details">
+    <v-breadcrumbs :items="breadcrumbsItems" divider=">"></v-breadcrumbs>
+
     <CountriesTable />
   </div>
 </template>

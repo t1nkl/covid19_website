@@ -60,7 +60,7 @@ onMounted(() => {
           </v-avatar>
           <div class="mx-2"></div>
           <strong class="title">
-            <RouterLink :to="'/details/' + item.raw.country.toLowerCase()">{{
+            <RouterLink class="link" :to="'/details/' + item.raw.country.toLowerCase()">{{
               item.raw.country
             }}</RouterLink>
           </strong>
@@ -107,4 +107,10 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.link {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+</style>

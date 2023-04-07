@@ -1,6 +1,6 @@
 {
   "name": "covid19_website",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Kyryll Kovalenko <kyryll.kovalenko@gmail.com>",
   "private": true,
   "scripts": {

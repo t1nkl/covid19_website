@@ -1,4 +1,5 @@
 import { fetchGlobalDataAdapter } from '@/adapters/api/fetchGlobalDataAdapter'
+import { fetchCountriesDataAdapter } from '@/adapters/api/fetchCountriesDataAdapter'
 
 // TODO: https://disease.sh/docs/#/
 // TODO: https://disease.sh/docs/#/
@@ -28,7 +29,9 @@ export async function fetchCountriesData() {
     }
   }
   const response = await fetch(`${API_URL}/covid-19/countries`, requestOptions)
-  return await response.json()
+  const responseJson = await response.json()
+
+  return fetchCountriesDataAdapter(responseJson)
 }
 
 export async function fetchCountryHistoricalData(countryName: string, lastDays: number) {
