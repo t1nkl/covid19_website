@@ -1,8 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ErrorPoints from '@/components/animations/ErrorPoints.vue'
+</script>
 
 <template>
-  <div class="404">
-    <h1>404</h1>
+  <div class="error-page">
+    <ErrorPoints />
   </div>
 </template>
 

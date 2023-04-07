@@ -59,7 +59,11 @@ onMounted(() => {
             <v-icon dark v-else>mdi-alert-circle-outline</v-icon>
           </v-avatar>
           <div class="mx-2"></div>
-          <strong class="title">{{ item.raw.country }}</strong>
+          <strong class="title">
+            <RouterLink :to="'/details/' + item.raw.country.toLowerCase()">{{
+              item.raw.country
+            }}</RouterLink>
+          </strong>
         </v-row>
       </template>
 

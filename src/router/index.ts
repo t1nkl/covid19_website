@@ -9,7 +9,7 @@ const router = createRouter({
       component: ElementorLayout,
       children: [
         {
-          path: '/',
+          path: '',
           name: 'home',
           component: () => import(/* webpackChunkName: "home" */ '@/views/HomeView.vue')
         },
@@ -17,6 +17,12 @@ const router = createRouter({
           path: '/details',
           name: 'details',
           component: () => import(/* webpackChunkName: "details" */ '@/views/DetailsView.vue')
+        },
+        {
+          path: '/details/:country_name',
+          name: 'details_country_name',
+          component: () =>
+            import(/* webpackChunkName: "details_country" */ '@/views/details/[country_name].vue')
         }
       ]
     },

@@ -1,13 +1,19 @@
 import { fetchGlobalDataAdapter } from '@/adapters/api/fetchGlobalDataAdapter'
 
-const API_URL = 'https://api.covid19api.com'
+// TODO: https://disease.sh/docs/#/
+// TODO: https://disease.sh/docs/#/
+// TODO: https://disease.sh/docs/#/
+const API_URL = 'https://disease.sh/v3'
 
 export async function fetchGlobalData() {
   const requestOptions: RequestInit = {
     method: 'GET',
-    redirect: 'follow'
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
   }
-  const response = await fetch(`${API_URL}/summary`, requestOptions)
+  const response = await fetch(`${API_URL}/covid-19/all`, requestOptions)
   const responseJson = await response.json()
 
   return fetchGlobalDataAdapter(responseJson)
@@ -16,24 +22,25 @@ export async function fetchGlobalData() {
 export async function fetchCountriesData() {
   const requestOptions: RequestInit = {
     method: 'GET',
-    redirect: 'follow'
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
   }
-  const response = await fetch(`${API_URL}/summary`, requestOptions)
+  const response = await fetch(`${API_URL}/covid-19/countries`, requestOptions)
   return await response.json()
 }
 
 export async function fetchCountryHistoricalData(countryName: string, lastDays: number) {
   const requestOptions: RequestInit = {
     method: 'GET',
-    redirect: 'follow'
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
   }
-  const currentDate = new Date()
-  const fromDate = new Date(currentDate.getTime() - lastDays * 24 * 60 * 60 * 1000)
-  const fromDateString = fromDate.toISOString().slice(0, 10)
-  const toDateString = currentDate.toISOString().slice(0, 10)
-
   const response = await fetch(
-    `${API_URL}/country/${countryName}?from=${fromDateString}T00:00:00Z&to=${toDateString}T23:59:59Z`,
+    `${API_URL}/covid-19/historical/${countryName}?lastdays=${lastDays}`,
     requestOptions
   )
   return await response.json()
