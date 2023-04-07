@@ -2,11 +2,10 @@ import type { GlobalData } from '@/models/GlobalData'
 
 export function fetchGlobalDataAdapter(data: any): GlobalData {
   if (process.env.NODE_ENV === 'development') {
-    console.log('fetchGlobalDataAdapter', data)
+    console.log('fetchGlobalDataAdapter -> ', data)
   }
 
-  // This function takes the response from each API and returns a standardized output object.
-  // Modify the logic here to match the output format.
+  // This is the format for the response from the CoronaNinjaApi.ts
   if (
     data &&
     'active' in data &&
@@ -14,7 +13,6 @@ export function fetchGlobalDataAdapter(data: any): GlobalData {
     'deathsPerOneMillion' in data &&
     'oneDeathPerPeople' in data
   ) {
-    // This is the format for the response from the CoronaNinjaApi.ts
     return {
       active: data.active,
       activePerOneMillion: data.activePerOneMillion,
@@ -40,6 +38,7 @@ export function fetchGlobalDataAdapter(data: any): GlobalData {
     }
   }
 
+  // This is the format for the response from the Covid19Api.ts
   if (
     data &&
     data.Global &&
@@ -47,7 +46,6 @@ export function fetchGlobalDataAdapter(data: any): GlobalData {
     data.Global.TotalDeaths !== undefined &&
     data.Global.TotalRecovered !== undefined
   ) {
-    // This is the format for the response from the Covid19Api.ts
     return {
       active: 0,
       activePerOneMillion: 0,

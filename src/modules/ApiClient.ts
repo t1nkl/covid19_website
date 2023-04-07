@@ -1,19 +1,19 @@
+import type { ApiClient } from '@/models/ApiClient'
 import {
   fetchGlobalData as fetchGlobalDataCoronaNinjaApi,
   fetchCountriesData as fetchCountriesDataCoronaNinjaApi,
   fetchCountryHistoricalData as fetchCountryHistoricalDataCoronaNinjaApi
 } from '@/api/CoronaNinjaApi'
 import {
+  fetchGlobalData as fetchGlobalDataDiseaseSHApi,
+  fetchCountriesData as fetchCountriesDataDiseaseSHApi,
+  fetchCountryHistoricalData as fetchCountryHistoricalDataDiseaseSHApi
+} from '@/api/DiseaseSHApi'
+import {
   fetchGlobalData as fetchGlobalDataCovid19Api,
   fetchCountriesData as fetchCountriesDataCovid19Api,
   fetchCountryHistoricalData as fetchCountryHistoricalDataCovid19Api
 } from '@/api/Covid19Api'
-
-interface ApiClient {
-  fetchGlobalData(): Promise<any>
-  fetchCountriesData(): Promise<any>
-  fetchCountryHistoricalData(countryName: string, lastDays: number): Promise<any>
-}
 
 type Api = {
   fetchGlobalData: () => Promise<any>
@@ -26,6 +26,11 @@ const apiList: Api[] = [
     fetchGlobalData: fetchGlobalDataCoronaNinjaApi,
     fetchCountriesData: fetchCountriesDataCoronaNinjaApi,
     fetchCountryHistoricalData: fetchCountryHistoricalDataCoronaNinjaApi
+  },
+  {
+    fetchGlobalData: fetchGlobalDataDiseaseSHApi,
+    fetchCountriesData: fetchCountriesDataDiseaseSHApi,
+    fetchCountryHistoricalData: fetchCountryHistoricalDataDiseaseSHApi
   },
   {
     fetchGlobalData: fetchGlobalDataCovid19Api,

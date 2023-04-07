@@ -1,4 +1,5 @@
 import { fetchGlobalDataAdapter } from '@/adapters/api/fetchGlobalDataAdapter'
+import { fetchCountriesDataAdapter } from '@/adapters/api/fetchCountriesDataAdapter'
 
 const API_URL = 'https://api.covid19api.com'
 
@@ -19,7 +20,9 @@ export async function fetchCountriesData() {
     redirect: 'follow'
   }
   const response = await fetch(`${API_URL}/summary`, requestOptions)
-  return await response.json()
+  const responseJson = await response.json()
+
+  return fetchCountriesDataAdapter(responseJson)
 }
 
 export async function fetchCountryHistoricalData(countryName: string, lastDays: number) {

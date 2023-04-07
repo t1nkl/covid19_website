@@ -10,24 +10,6 @@ const props = defineProps({
   }
 })
 
-const breadcrumbsItems = [
-  {
-    title: 'Home',
-    disabled: false,
-    href: '/'
-  },
-  {
-    title: 'Details',
-    disabled: false,
-    href: '/details'
-  },
-  {
-    title: props.countryHistoricalData?.country,
-    disabled: true,
-    href: props.countryHistoricalData?.country.toLowerCase()
-  }
-]
-
 const chartLineSeries = [
   {
     name: 'cases',
@@ -77,8 +59,6 @@ const chartLineOptions = {
 
 <template>
   <div id="charts">
-    <v-breadcrumbs :items="breadcrumbsItems" divider=">"></v-breadcrumbs>
-
     <div id="chart-line2">
       <apexchart
         type="line"

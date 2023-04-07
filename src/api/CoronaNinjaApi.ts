@@ -1,4 +1,5 @@
 import { fetchGlobalDataAdapter } from '@/adapters/api/fetchGlobalDataAdapter'
+import { fetchCountriesDataAdapter } from '@/adapters/api/fetchCountriesDataAdapter'
 
 const API_URL = 'https://corona.lmao.ninja/v2'
 
@@ -11,7 +12,9 @@ export async function fetchGlobalData() {
 
 export async function fetchCountriesData() {
   const response = await fetch(`${API_URL}/countries`)
-  return await response.json()
+  const responseJson = await response.json()
+
+  return fetchCountriesDataAdapter(responseJson)
 }
 
 export async function fetchCountryHistoricalData(countryName: string, lastDays: number) {

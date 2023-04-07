@@ -9,6 +9,24 @@ import CountryStatisticsLineChart from '@/components/charts/CountryStatisticsLin
 const route = useRoute()
 const store = useCountryStore()
 const loading = ref(true)
+
+const breadcrumbsItems = [
+  {
+    title: 'Home',
+    disabled: false,
+    href: '/'
+  },
+  {
+    title: 'Details',
+    disabled: false,
+    href: '/details'
+  },
+  {
+    title: (route.params.country_name as string).toUpperCase(),
+    disabled: true,
+    href: (route.params.country_name as string).toLowerCase()
+  }
+]
 const fetchData = async () => {
   await store.fetchData(route.params.country_name as string, 30)
   loading.value = false
@@ -21,6 +39,8 @@ onMounted(async () => {
 </script>
 
 <template>
+  <v-breadcrumbs :items="breadcrumbsItems" divider=">"></v-breadcrumbs>
+
   <div
     class="details country-name"
     v-if="Object.keys(countryHistoricalData).length > 0 && !loading"
