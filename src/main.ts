@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import * as Sentry from '@sentry/vue'
+import VueApexCharts from 'vue3-apexcharts'
 
 import App from './App.vue'
 import router from './router'
@@ -32,10 +33,11 @@ Sentry.init({
   // If the entire session is not sampled, use the below sample rate to sample
   // sessions when an error occurs.
   replaysOnErrorSampleRate: 1.0,
-  release: 'covid19_website@1.0.2'
+  release: 'covid19_website@1.0.3'
 })
 
 app.use(createPinia())
 app.use(router)
 app.use(vuetify)
+app.use(VueApexCharts)
 app.mount('#app')
