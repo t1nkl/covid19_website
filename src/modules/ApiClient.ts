@@ -23,14 +23,14 @@ type Api = {
 
 const apiList: Api[] = [
   {
-    fetchGlobalData: fetchGlobalDataCoronaNinjaApi,
-    fetchCountriesData: fetchCountriesDataCoronaNinjaApi,
-    fetchCountryHistoricalData: fetchCountryHistoricalDataCoronaNinjaApi
-  },
-  {
     fetchGlobalData: fetchGlobalDataDiseaseSHApi,
     fetchCountriesData: fetchCountriesDataDiseaseSHApi,
     fetchCountryHistoricalData: fetchCountryHistoricalDataDiseaseSHApi
+  },
+  {
+    fetchGlobalData: fetchGlobalDataCoronaNinjaApi,
+    fetchCountriesData: fetchCountriesDataCoronaNinjaApi,
+    fetchCountryHistoricalData: fetchCountryHistoricalDataCoronaNinjaApi
   },
   {
     fetchGlobalData: fetchGlobalDataCovid19Api,

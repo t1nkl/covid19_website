@@ -20,10 +20,10 @@ onMounted(() => {
 
 <template>
   <div class="home">
-    <div class="global-data">
+    <div class="global-data" v-if="Object.keys(globalDataTotal).length > 0 && !loading">
       <h1>World</h1>
       <br />
-      <div v-if="Object.keys(globalDataTotal).length > 0 && !loading">
+      <div>
         <p>
           Date:
           {{
@@ -42,26 +42,19 @@ onMounted(() => {
         <br />
         <RouterLink to="/details">more details</RouterLink>
       </div>
-      <div v-else>
-        <LoaderSimplify />
-      </div>
+    </div>
+    <div v-else>
+      <LoaderSimplify />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .slide-fade-enter-active {
-  transition: all 4s ease;
+  transition: all 4s ease !important;
 }
 .slide-fade-leave-active {
-  transition: all 1s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter,
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  filter: blur(8px);
-  transform: translateX(10px);
-  opacity: 0;
+  transition: all 1s cubic-bezier(1, 0.5, 0.8, 1) !important;
 }
 
 .global-data {
