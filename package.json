@@ -1,6 +1,6 @@
 {
   "name": "covid19_website",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Covid-19 statistics website",
   "author": "Kyryll Kovalenko <kyryll.kovalenko@gmail.com>",
   "private": true,
