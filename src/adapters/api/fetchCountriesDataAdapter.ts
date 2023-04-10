@@ -13,7 +13,9 @@ export function fetchCountriesDataAdapter(data: Array<any> | Object): Country[] 
 
     const firstItem = data[0]
 
-    // This is the format for the response from the CoronaNinjaApi.ts
+    /**
+     * This is the format for the response from the CoronaNinjaApi.ts
+     */
     if (
       firstItem &&
       'country' in firstItem &&
@@ -57,13 +59,15 @@ export function fetchCountriesDataAdapter(data: Array<any> | Object): Country[] 
       console.log('fetchCountriesDataAdapter -> isObject -> ', data)
     }
 
+    /**
+     * This is the format for the response from the Covid19Api.ts
+     */
     if (data && 'ID' in data && 'Global' in data && 'Countries' in data) {
       // @ts-ignore
       if (Array.isArray(data.Countries) && data.Countries.length > 0) {
         // @ts-ignore
         const firstItem = data.Countries[0]
 
-        // This is the format for the response from the Covid19Api.ts
         if (
           firstItem &&
           'ID' in firstItem &&

@@ -5,7 +5,9 @@ export function fetchGlobalDataAdapter(data: any): GlobalData {
     console.log('fetchGlobalDataAdapter -> ', data)
   }
 
-  // This is the format for the response from the CoronaNinjaApi.ts
+  /**
+   * This is the format for the response from the CoronaNinjaApi.ts
+   */
   if (
     data &&
     'active' in data &&
@@ -38,7 +40,9 @@ export function fetchGlobalDataAdapter(data: any): GlobalData {
     }
   }
 
-  // This is the format for the response from the Covid19Api.ts
+  /**
+   * This is the format for the response from the Covid19Api.ts
+   */
   if (
     data &&
     data.Global &&

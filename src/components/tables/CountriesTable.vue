@@ -7,6 +7,75 @@ import LoaderSimplify from '@/components/animations/LoaderSimplify.vue'
 const store = useCountriesStore()
 const loading = ref(true)
 const search = ref('')
+const countriesTableHeaders = [
+  {
+    title: 'Country',
+    align: 'center',
+    key: 'country',
+    class: 'text-center text-uppercase',
+    sortable: true
+  },
+  {
+    title: 'Cases',
+    align: 'center',
+    key: 'cases',
+    class: 'text-center text-uppercase',
+    sortable: true
+  },
+  {
+    title: 'Active',
+    align: 'center',
+    key: 'active',
+    class: 'text-center text-uppercase',
+    sortable: true
+  },
+  {
+    title: 'Recovered',
+    align: 'center',
+    key: 'recovered',
+    class: 'text-center text-uppercase',
+    sortable: true
+  },
+  {
+    title: 'Critical',
+    align: 'center',
+    key: 'critical',
+    class: 'text-center text-uppercase',
+    sortable: true
+  },
+  {
+    title: 'Deaths',
+    align: 'center',
+    key: 'deaths',
+    class: 'text-center text-uppercase',
+    sortable: true
+  },
+  {
+    title: 'Tests',
+    align: 'center',
+    key: 'tests',
+    class: 'text-center text-uppercase',
+    sortable: true
+  },
+  {
+    title: 'Cases/Million',
+    align: 'center',
+    key: 'casesPerOneMillion',
+    class: 'text-center text-uppercase'
+  },
+  {
+    title: 'Deaths/Million',
+    align: 'center',
+    key: 'deathsPerOneMillion',
+    class: 'text-center text-uppercase'
+  },
+  {
+    title: 'Tests/Million',
+    align: 'center',
+    key: 'testsPerOneMillion',
+    class: 'text-center text-uppercase'
+  }
+]
 
 const fetchData = async () => {
   await store.fetchData()
@@ -31,7 +100,7 @@ onMounted(() => {
       ></v-text-field>
     </v-card-title>
     <v-data-table
-      :headers="store.getCountriesTableHeaders"
+      :headers="countriesTableHeaders"
       :items="countriesData"
       :loading="loading"
       :search="search"

@@ -34,7 +34,7 @@ if (process.env.NODE_ENV !== 'development') {
     // If the entire session is not sampled, use the below sample rate to sample
     // sessions when an error occurs.
     replaysOnErrorSampleRate: 1.0,
-    release: 'covid19_website@1.0.4'
+    release: 'covid19_website@1.0.5'
   })
 }
 

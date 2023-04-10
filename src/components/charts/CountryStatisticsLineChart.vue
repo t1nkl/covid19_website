@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import type { PropType } from 'vue'
 import type { CountryHistoricalData } from '@/models/CountryHistoricalData'
 
@@ -7,12 +6,16 @@ const props = defineProps({
   countryHistoricalData: {
     type: Object as PropType<CountryHistoricalData>,
     default: () => {}
+  },
+  historyDays: {
+    type: Number,
+    default: 30
   }
 })
 
 const chartLineSeries = [
   {
-    name: 'cases',
+    name: 'Cases',
     data: Object.values(props.countryHistoricalData?.timeline?.cases || [])
   }
 ]
@@ -23,6 +26,15 @@ const chartLineOptions = {
     type: 'line',
     zoom: {
       enabled: false
+    },
+    animations: {
+      enabled: true,
+      easing: 'easeout',
+      speed: 500,
+      dynamicAnimation: {
+        enabled: true,
+        speed: 350
+      }
     }
   },
   tooltip: {
@@ -62,7 +74,7 @@ const chartLineOptions = {
     <div id="chart-line2">
       <apexchart
         type="line"
-        height="350"
+        height="550"
         :options="chartLineOptions"
         :series="chartLineSeries"
       ></apexchart>

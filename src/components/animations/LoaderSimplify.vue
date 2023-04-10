@@ -1,13 +1,18 @@
 <script setup lang="ts"></script>
 
 <template>
-  <p class="loader-simplify">
+  <div class="loader-simplify">
     Loading<span class="dot-1">.</span><span class="dot-2">.</span><span class="dot-3">.</span>
-  </p>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .loader-simplify {
+  max-width: 350px;
+  margin: 10rem auto;
+  padding: 2rem;
+  font-weight: normal;
+
   @keyframes blink {
     0% {
       opacity: 0.2;
