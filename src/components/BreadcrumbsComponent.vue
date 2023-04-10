@@ -51,13 +51,11 @@ const breadcrumbsItems = () => {
 <style lang="scss" scoped>
 .breadcrumbs {
   ul.v-breadcrumbs {
-    //padding: 10px 16px;
     list-style: none;
   }
 
   ul.v-breadcrumbs li {
     display: inline;
-    //font-size: 18px;
   }
 
   ul.v-breadcrumbs li + li:before {
