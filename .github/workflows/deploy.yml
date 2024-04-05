@@ -36,7 +36,7 @@ jobs:
           name: dist
           path: dist
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@v13.4.0
         with:
           args: deploy --only hosting --project my-projects-6fe1a
         env:
